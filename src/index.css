@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/* Dark mode por clase en <html>, controlado desde ThemeContext */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------
+   Tokens de color. Se definen como variables CSS "crudas" en :root
+   y .dark, y se exponen a Tailwind con @theme inline para poder
+   escribir bg-bg, text-fg, border-line, text-primary, etc.
+   --------------------------------------------------------------- */
+:root {
+  --bg: #ffffff;
+  --bg-elev: #f8fafc;
+  --surface: #ffffff;
+  --fg: #0f172a;
+  --muted: #64748b;
+  --line: rgba(15, 23, 42, 0.10);
+  --primary: #2563eb;
+  --accent: #0284c7;
+  --violet: #6366f1;
+  --hero-a: #eff6ff;
+  --hero-b: #dbeafe;
+  --hero-c: #bfdbfe;
+  --glow-1: rgba(37, 99, 235, 0.28);
+  --glow-2: rgba(56, 189, 248, 0.26);
+  --chart-opacity: 0.22;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #020617;
+  --bg-elev: #0b1222;
+  --surface: #0f172a;
+  --fg: #f1f5f9;
+  --muted: #94a3b8;
+  --line: rgba(255, 255, 255, 0.10);
+  --primary: #3b82f6;
+  --accent: #38bdf8;
+  --violet: #818cf8;
+  --hero-a: #020617;
+  --hero-b: #0f172a;
+  --hero-c: #1e3a5f;
+  --glow-1: rgba(37, 99, 235, 0.45);
+  --glow-2: rgba(56, 189, 248, 0.35);
+  --chart-opacity: 0.16;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-elev: var(--bg-elev);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-brand-violet: var(--violet);
+
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-brand: 0.75rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* deja aire bajo la barra fija al saltar a una sección */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  /* Degradado del hero, cambia solo con el tema */
+  .hero-gradient {
+    background: linear-gradient(135deg, var(--hero-a) 0%, var(--hero-b) 42%, var(--hero-c) 100%);
+  }
+
+  /* Texto con degradado azul -> celeste */
+  .text-gradient {
+    background-image: linear-gradient(120deg, var(--accent), var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Tarjetas de vidrio */
+  .glass {
+    background-color: color-mix(in srgb, var(--surface) 80%, transparent);
+    /* Sin prefijo -webkit- a mano: el compilador lo agrega según los navegadores
+       objetivo, y escribirlo acá hacía que descartara la propiedad estándar. */
+    backdrop-filter: blur(14px);
+  }
+
+  /* Trama de puntos sutil de fondo */
+  .dot-grid {
+    background-image: radial-gradient(circle at 1px 1px, var(--line) 1px, transparent 0);
+    background-size: 26px 26px;
+  }
+}
+
+/* Respeta a quien pidió menos movimiento en su sistema operativo */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
