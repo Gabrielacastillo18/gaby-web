@@ -10,7 +10,7 @@ export const site = {
   shortName: 'Gabriela.',
 
   role: {
-    es: 'Analista de datos',
+    es: 'Analista de datos - UBA',
     en: 'Data Analyst',
   } as I18nText,
 
