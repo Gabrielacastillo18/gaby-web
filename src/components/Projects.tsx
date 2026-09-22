@@ -5,23 +5,14 @@ import { Reveal } from './Reveal'
 import { Section } from './Section'
 
 export function Projects() {
-  // Los destacados primero, respetando el orden del archivo dentro de cada grupo.
-  const ordered = [...projects].sort((a, b) => Number(b.featured) - Number(a.featured))
-
   return (
-    <Section
-      id="projects"
-      eyebrow={ui.sections.projectsEyebrow}
-      title={ui.sections.projectsTitle}
-      intro={ui.sections.projectsIntro}
-    >
-      <div className="grid gap-5 md:grid-cols-2">
-        {ordered.map((project, index) => (
-          <Reveal
-            key={project.slug}
-            delay={Math.min(index * 0.07, 0.3)}
-            className={project.featured ? 'h-full md:col-span-2' : 'h-full'}
-          >
+    <Section id="projects" heading={ui.sections.projects}>
+      {/* Una columna en mobile para no perder legibilidad, dos a partir de
+          pantallas medianas. Todas las tarjetas son iguales: mismo tamaño,
+          mismo color, mismo layout. */}
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {projects.map((project, index) => (
+          <Reveal key={project.slug} delay={Math.min(index * 0.06, 0.3)} className="h-full">
             <ProjectCard project={project} />
           </Reveal>
         ))}

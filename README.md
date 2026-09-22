@@ -77,8 +77,7 @@ Campos de cada proyecto:
 | --- | --- |
 | `slug` | Identificador para la dirección web. Sin espacios, sin acentos, sin mayúsculas |
 | `year` | Se muestra tal cual: `'2026'`, `'2025 · en curso'` |
-| `featured` | `true` lo pone primero y le da el ancho completo |
-| `category` | La etiqueta de color de la tarjeta |
+| `category` | La etiqueta de la tarjeta (categoría del proyecto) |
 | `title`, `summary` | Título y una bajada de dos líneas |
 | `problem`, `analysis`, `solution` | El resumen de tres pasos que se ve en la tarjeta |
 | `metric` | El número fuerte. `null` si todavía no hay resultados medibles |
@@ -87,8 +86,12 @@ Campos de cada proyecto:
 | `note` | Aclaración chica bajo el título. `null` para omitirla |
 | `cover` | Imagen de portada. `null` dibuja un mini gráfico automático |
 | `chart` | Qué mini gráfico dibujar: `'area'`, `'bars'`, `'line'` o `'scatter'` |
-| `accent` | Color del proyecto: `'blue'`, `'cyan'`, `'indigo'`, `'violet'` o `'emerald'` |
 | `detail` | El contenido de la página de detalle. `null` = el proyecto no tiene detalle |
+
+Todos los proyectos se muestran del mismo tamaño y color, dos por fila en
+pantallas medianas en adelante (una sola columna en el celular, para que no
+se apriete el texto). El orden de la grilla es el orden en que aparecen acá,
+de arriba hacia abajo.
 
 Dentro de `detail` van el contexto, los datos usados, el proceso paso a paso, los
 hallazgos y el impacto.

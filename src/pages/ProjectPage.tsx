@@ -6,7 +6,7 @@ import { Reveal } from '../components/Reveal'
 import { findProject, projects } from '../content/projects'
 import { ui } from '../content/ui'
 import { useLang } from '../context/LangContext'
-import { accentColor, softAccent } from '../lib/accent'
+import { projectAccent, softAccent } from '../lib/accent'
 import { asset } from '../lib/assets'
 
 export function ProjectPage() {
@@ -38,7 +38,7 @@ export function ProjectPage() {
     )
   }
 
-  const color = accentColor[project.accent]
+  const color = projectAccent
   const index = projects.findIndex((item) => item.slug === project.slug)
   const previous = index > 0 ? projects[index - 1] : null
   const next = index < projects.length - 1 ? projects[index + 1] : null
@@ -64,10 +64,7 @@ export function ProjectPage() {
           </button>
 
           <div className="mt-8 flex flex-wrap items-center gap-3 text-xs">
-            <span
-              className="rounded-full px-3 py-1 font-medium"
-              style={{ color, backgroundColor: `${softAccent(color, 10)}` }}
-            >
+            <span className="rounded-full bg-accent/10 px-3 py-1 font-medium text-accent">
               {t(project.category)}
             </span>
             <span className="text-muted">{project.year}</span>
@@ -83,7 +80,7 @@ export function ProjectPage() {
 
           {project.metric && (
             <div className="mt-8 inline-flex items-baseline gap-3 rounded-2xl border border-line bg-surface/60 px-6 py-4">
-              <span className="font-display text-3xl font-bold" style={{ color }}>
+              <span className="font-display text-3xl font-bold text-accent">
                 {project.metric.value}
               </span>
               <span className="text-sm text-muted">{t(project.metric.label)}</span>
@@ -107,8 +104,7 @@ export function ProjectPage() {
             <MiniChart
               kind={project.chart}
               seed={project.slug}
-              accent={project.accent}
-              className="h-52 w-full p-8 text-fg sm:h-64"
+              className="h-52 w-full p-8 text-accent sm:h-64"
             />
           )}
         </motion.div>
@@ -130,7 +126,7 @@ export function ProjectPage() {
                     key={stepIndex}
                     className="rounded-2xl border border-line bg-surface/60 p-5"
                   >
-                    <p className="text-[0.66rem] font-bold uppercase tracking-[0.14em]" style={{ color }}>
+                    <p className="text-[0.66rem] font-bold uppercase tracking-[0.14em] text-accent">
                       {t(step.label)}
                     </p>
                     <p className="mt-2.5 text-sm leading-relaxed text-muted">{t(step.text)}</p>
@@ -161,10 +157,7 @@ export function ProjectPage() {
                     <ol className="mt-5 space-y-5">
                       {project.detail.process.map((step, stepIndex) => (
                         <li key={stepIndex} className="relative flex gap-4">
-                          <span
-                            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold"
-                            style={{ color, backgroundColor: `${softAccent(color, 10)}` }}
-                          >
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10 text-xs font-bold text-accent">
                             {stepIndex + 1}
                           </span>
                           <div>
@@ -183,10 +176,7 @@ export function ProjectPage() {
                     <ul className="mt-4 space-y-3">
                       {project.detail.findings.map((finding, findingIndex) => (
                         <li key={findingIndex} className="flex gap-3 leading-relaxed text-muted">
-                          <span
-                            className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full"
-                            style={{ backgroundColor: color }}
-                          />
+                          <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                           {t(finding)}
                         </li>
                       ))}
@@ -195,10 +185,7 @@ export function ProjectPage() {
                 </Reveal>
 
                 <Reveal>
-                  <section
-                    className="rounded-2xl border p-6"
-                    style={{ borderColor: `${softAccent(color, 25)}`, backgroundColor: `${softAccent(color, 5)}` }}
-                  >
+                  <section className="rounded-2xl border border-accent/25 bg-accent/5 p-6">
                     <h2 className="font-display text-xl font-bold">{t(ui.project.impact)}</h2>
                     <p className="mt-3 leading-relaxed text-muted">{t(project.detail.impact)}</p>
                   </section>

@@ -1,4 +1,4 @@
-import type { I18nText } from './types'
+import type { AboutBlock, AboutFact, ContactChannel, I18nText } from './types'
 
 /* -------------------------------------------------------------------
    Datos personales, textos del hero y de la sección "Sobre mí".
@@ -7,9 +7,7 @@ import type { I18nText } from './types'
 
 export const site = {
   fullName: 'Lina Gabriela Castillo',
-  shortName: 'Gabriela',
-  /** Se muestra en el logo de la barra superior. */
-  initials: 'GC',
+  shortName: 'Gabriela.',
 
   role: {
     es: 'Analista de datos',
@@ -22,9 +20,9 @@ export const site = {
   } as I18nText,
 
   email: 'gabscast1820@gmail.com',
+  phone: '+54 11 7058-1565',
   linkedin: 'https://www.linkedin.com/in/castillogabriela/',
-  /** Cuando exista el repo, pegar la URL acá. Vacío = no se muestra el botón. */
-  github: '',
+  github: 'https://github.com/GabrielaCastillo18',
 
   photo: 'img/gaby.jpg',
   photoWebp: 'img/gaby.webp',
@@ -34,12 +32,6 @@ export const site = {
     es: 'cv/CV-Gabriela-Castillo-ES.docx',
     en: 'cv/CV-Gabriela-Castillo-ES.docx',
   } as I18nText,
-}
-
-/** Pastilla chica arriba del título del hero. */
-export const heroBadge: I18nText = {
-  es: 'Analista de datos · Especialización en curso (UBA)',
-  en: 'Data Analyst · Postgraduate in progress (UBA)',
 }
 
 /**
@@ -53,63 +45,110 @@ export const heroTitle = {
 }
 
 export const heroIntro: I18nText = {
-  es: 'Hola, soy Gabriela. Analista de datos con formación en antropología: uso Python, SQL y Power BI para responder preguntas de negocio, sin perder de vista la pregunta que casi nadie hace primero — qué decisión hay detrás del dato.',
-  en: "Hi, I'm Gabriela. A data analyst with a background in anthropology: I use Python, SQL and Power BI to answer business questions, without losing sight of the one question few people ask first — what decision is behind the data.",
+  es: 'Hola, soy Gabriela. Antes de abrir una base de datos, entiendo el contexto: de qué se trata el problema, quién necesita resolverlo y por qué. Parto de mirar primero lo cualitativo, y lo llevo con criterio hasta los números — ese recorrido completo es lo que convierte un dato en una decisión.',
+  en: "Hi, I'm Gabriela. Before I open a dataset, I understand the context: what the problem really is, who needs to solve it, and why. I start by looking at the qualitative side, then bring it — with judgment — into the numbers. That full journey is what turns data into a decision.",
 }
 
-/** Números que se muestran abajo del hero. */
-export const heroStats: { value: string; label: I18nText }[] = [
+/** Herramientas que se muestran como logos abajo del hero. */
+export const heroTools: { id: 'python' | 'sql' | 'excel' | 'powerbi'; label: string }[] = [
+  { id: 'python', label: 'Python' },
+  { id: 'sql', label: 'SQL' },
+  { id: 'excel', label: 'Excel' },
+  { id: 'powerbi', label: 'Power BI' },
+]
+
+/* -------------------------------------------------------------------
+   Sección "Sobre mí": columna izquierda (bloques con ícono) y columna
+   derecha (tarjetas de dato).
+   ------------------------------------------------------------------- */
+
+export const aboutBlocks: AboutBlock[] = [
   {
-    value: 'USD 123K',
-    label: { es: 'recuperados en cartera vencida', en: 'recovered in overdue receivables' },
+    icon: 'user',
+    title: { es: 'Quién soy', en: 'Who I am' },
+    text: {
+      es: 'Soy analista de datos, pero antes que nada soy alguien que hace preguntas. Me formé en antropología, y esa mirada — entender el porqué antes que el cómo — es la que llevo a cada análisis.',
+      en: "I'm a data analyst, but first and foremost I'm someone who asks questions. My background is in anthropology, and that lens — understanding the why before the how — is what I bring to every analysis.",
+    },
   },
   {
-    value: '6/9',
-    label: { es: 'materias de la Especialización (UBA)', en: 'courses of the UBA postgraduate' },
+    icon: 'target',
+    title: { es: 'Qué me mueve', en: 'What drives me' },
+    text: {
+      es: 'Me atrae entender cómo la gente vive un producto o un servicio, y cómo funcionan los sistemas alimentarios de punta a punta. Pero mi curiosidad no se queda ahí: disfruto meterme en temas nuevos, siempre desde una mirada transversal que busca primero entender el problema en su propio contexto.',
+      en: "I'm drawn to understanding how people experience a product or service, and how food systems work end to end. But my curiosity doesn't stop there: I enjoy digging into new topics, always through a transversal lens that starts by understanding the problem on its own terms.",
+    },
   },
   {
-    value: '5',
-    label: { es: 'proyectos de análisis y modelado', en: 'analysis and modeling projects' },
+    icon: 'layers',
+    title: { es: 'Cómo trabajo', en: 'How I work' },
+    text: {
+      es: 'Sea cual sea el terreno, mi proceso es el mismo: hago las preguntas que el contexto pide, cruzo esa mirada cualitativa con los datos, y de ahí salen decisiones concretas — no un informe que termina en un cajón.',
+      en: 'Whatever the field, my process stays the same: I ask the questions the context calls for, cross that qualitative read with the data, and land on concrete decisions — not a report that ends up in a drawer.',
+    },
   },
 ]
 
-/** Párrafos de la sección "Sobre mí". Agregar o sacar elementos del array. */
-export const aboutParagraphs: I18nText[] = [
+export const aboutFacts: AboutFact[] = [
   {
-    es: 'Soy analista de datos y antropóloga. La mezcla no es casual: pasé cuatro años aprendiendo a hacer preguntas sobre cómo se comporta la gente, y hoy uso Python, SQL y Power BI para responderlas con evidencia.',
-    en: 'I am a data analyst and an anthropologist. The mix is not accidental: I spent four years learning how to ask questions about how people behave, and today I use Python, SQL and Power BI to answer them with evidence.',
+    icon: 'graduation',
+    title: { es: 'Especialización', en: 'Postgraduate' },
+    subtitle: { es: 'Análisis de Datos', en: 'Data Analysis' },
+    detail: { es: 'UBA · en curso', en: 'UBA · in progress' },
   },
   {
-    es: 'Actualmente curso la Especialización en Análisis de Datos de la UBA, donde trabajo con modelos de clasificación, clustering y PCA. En paralelo, auditar cuentas médicas me enseñó algo que ningún curso enseña: un modelo no sirve si los datos de entrada están sucios, y limpiarlos es la mitad del trabajo.',
-    en: 'I am currently taking the Data Analysis postgraduate programme at the University of Buenos Aires, working with classification, clustering and PCA models. Meanwhile, auditing medical accounts taught me something no course does: a model is worthless if the input data is dirty, and cleaning it is half the job.',
+    icon: 'book',
+    title: { es: 'Licenciatura', en: "Bachelor's degree" },
+    subtitle: { es: 'Antropología', en: 'Anthropology' },
+    detail: { es: 'Uniandes, Bogotá', en: 'Uniandes, Bogotá' },
   },
   {
-    es: 'Me interesan los problemas donde el análisis tiene consecuencias concretas: plata que se recupera, procesos que dejan de repetirse, cosechas que no se pierden.',
-    en: 'I am drawn to problems where analysis has concrete consequences: money that gets recovered, processes that stop repeating themselves, harvests that are not lost.',
+    icon: 'chart',
+    title: { es: 'Proyectos', en: 'Projects' },
+    subtitle: { es: 'Análisis y modelado', en: 'Analysis and modeling' },
+    detail: { es: 'Múltiples dominios', en: 'Multiple domains' },
+  },
+  {
+    icon: 'spark',
+    title: { es: 'Enfoque', en: 'Approach' },
+    subtitle: { es: 'Cualitativo + cuantitativo', en: 'Qualitative + quantitative' },
+    detail: { es: 'El contexto primero', en: 'Context first' },
   },
 ]
 
-/** Tres ideas cortas que acompañan a "Sobre mí". */
-export const aboutHighlights: { title: I18nText; text: I18nText }[] = [
+/* -------------------------------------------------------------------
+   Canales de contacto de la sección final. Todos comparten el color de
+   acento del sitio: antes cada uno tenía el suyo (azul, rojo, violeta) y
+   quedaba disperso.
+   ------------------------------------------------------------------- */
+
+export const contactChannels: ContactChannel[] = [
   {
-    title: { es: 'Del dato a la decisión', en: 'From data to decision' },
-    text: {
-      es: 'Empiezo por la pregunta de negocio, no por el dataset. Un análisis que no cambia una decisión es un ejercicio.',
-      en: 'I start from the business question, not the dataset. An analysis that changes no decision is just an exercise.',
-    },
+    icon: 'phone',
+    label: { es: 'Celular', en: 'Phone' },
+    value: site.phone,
+    href: `tel:${site.phone.replace(/[^+\d]/g, '')}`,
+    tone: 'accent',
   },
   {
-    title: { es: 'Calidad de datos primero', en: 'Data quality first' },
-    text: {
-      es: 'Auditoría, depuración y cruce de bases antes de modelar. La mayor parte del valor aparece ahí.',
-      en: 'Auditing, cleaning and cross-checking before modeling. Most of the value shows up right there.',
-    },
+    icon: 'linkedin',
+    label: { es: 'LinkedIn', en: 'LinkedIn' },
+    value: 'in/castillogabriela',
+    href: site.linkedin,
+    tone: 'primary',
   },
   {
-    title: { es: 'Resultados explicables', en: 'Explainable results' },
-    text: {
-      es: 'Un modelo hay que poder contarlo. Si el equipo que decide no lo entiende, no se usa.',
-      en: 'A model has to be explainable. If the people deciding do not understand it, it does not get used.',
-    },
+    icon: 'github',
+    label: { es: 'GitHub', en: 'GitHub' },
+    value: site.github.replace(/^https?:\/\//, ''),
+    href: site.github,
+    tone: 'violet',
+  },
+  {
+    icon: 'pin',
+    label: { es: 'Ubicación', en: 'Location' },
+    value: 'Buenos Aires, Argentina',
+    href: 'https://maps.google.com/?q=Buenos+Aires,+Argentina',
+    tone: 'accent',
   },
 ]

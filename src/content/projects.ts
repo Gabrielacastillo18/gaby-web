@@ -5,8 +5,7 @@ import { same, type Project } from './types'
 
    Para agregar uno nuevo: copiá un bloque entero, cambiá el "slug"
    (tiene que ser único, sin espacios ni acentos) y reemplazá los textos.
-   Los destacados (featured: true) aparecen primero y ocupan el ancho
-   completo de la grilla.
+   Todas las tarjetas se muestran igual, en el orden en que están acá.
 
    - metric: null    -> la tarjeta no muestra número.
    - links: []       -> no se muestran enlaces externos.
@@ -18,7 +17,6 @@ export const projects: Project[] = [
   {
     slug: 'recuperacion-cartera-salud',
     year: '2026',
-    featured: true,
     category: { es: 'Salud · Auditoría de datos', en: 'Healthcare · Data auditing' },
     title: {
       es: 'Recuperación de cartera vencida en salud',
@@ -56,7 +54,6 @@ export const projects: Project[] = [
     },
     cover: null,
     chart: 'bars',
-    accent: 'emerald',
     detail: {
       context: {
         es: 'En el sistema de salud colombiano, los hospitales facturan a las EPS (las aseguradoras) y cobran contra esa factura. Cuando los datos del paciente, el procedimiento o la autorización no coinciden exactamente entre las dos bases, el pago se congela. Con el tiempo se acumula una cartera vencida que todos dan por perdida.',
@@ -120,7 +117,6 @@ export const projects: Project[] = [
   {
     slug: 'deterioro-poscosecha-maiz',
     year: '2026 · en curso',
-    featured: true,
     category: { es: 'Agro · Modelos predictivos', en: 'Agriculture · Predictive modeling' },
     title: {
       es: 'Deterioro poscosecha en maíz',
@@ -151,7 +147,6 @@ export const projects: Project[] = [
     },
     cover: null,
     chart: 'line',
-    accent: 'blue',
     detail: {
       context: {
         es: 'Entre la cosecha y la venta, el maíz pasa semanas o meses almacenado. En ese período la humedad y la temperatura del grano determinan si el lote se conserva o se deteriora. El productor decide cuándo secar y cuándo vender con poca información sobre lo que está por pasar dentro del silo.',
@@ -207,7 +202,6 @@ export const projects: Project[] = [
   {
     slug: 'churn-bancario',
     year: '2025',
-    featured: false,
     category: { es: 'Banca · Segmentación', en: 'Banking · Segmentation' },
     title: {
       es: 'Churn bancario: quién se va y por qué',
@@ -241,7 +235,6 @@ export const projects: Project[] = [
     },
     cover: null,
     chart: 'scatter',
-    accent: 'indigo',
     detail: {
       context: {
         es: 'Trabajo de la materia Métodos de Análisis Multivariado de la Especialización. El objetivo no era solo predecir el abandono, sino comparar qué aporta cada técnica cuando se aplica al mismo problema.',
@@ -301,7 +294,6 @@ export const projects: Project[] = [
   {
     slug: 'que-libro-leo',
     year: '2025',
-    featured: false,
     category: { es: 'Producto · Clasificación', en: 'Product · Classification' },
     title: {
       es: 'Qué Libro Leo: predicción de preferencia lectora',
@@ -329,7 +321,6 @@ export const projects: Project[] = [
     note: { es: 'UBA · proyecto individual', en: 'UBA · individual project' },
     cover: null,
     chart: 'bars',
-    accent: 'violet',
     detail: {
       context: {
         es: 'Proyecto individual de la Especialización. La idea era construir el recorrido completo: desde datos crudos hasta un modelo entrenado y evaluado, pasando por todas las decisiones intermedias.',
@@ -378,7 +369,6 @@ export const projects: Project[] = [
   {
     slug: 'auditoria-de-datos',
     year: '2025',
-    featured: false,
     category: { es: 'Calidad de datos · EDA', en: 'Data quality · EDA' },
     title: {
       es: 'Informe de auditoría de datos',
@@ -406,7 +396,6 @@ export const projects: Project[] = [
     note: { es: 'UBA · Gestión y Procesamiento de Bases de Datos', en: 'UBA · Database Management and Processing' },
     cover: null,
     chart: 'area',
-    accent: 'cyan',
     detail: {
       context: {
         es: 'Trabajo de la materia de bases de datos, con nociones de auditoría. El foco estaba en tratar la calidad del dato como un objeto de análisis en sí mismo, y no como un paso previo que se despacha rápido.',

@@ -122,3 +122,105 @@ export const SparkIcon = (p: IconProps) => (
     <path d="M4 20h16" />
   </Base>
 )
+
+export const GraduationIcon = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M22 10 12 5 2 10l10 5 10-5Z" />
+    <path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" />
+  </Base>
+)
+
+export const BriefcaseIcon = (p: IconProps) => (
+  <Base {...p}>
+    <rect x="2" y="7" width="20" height="14" rx="2" />
+    <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+  </Base>
+)
+
+export const CalendarIcon = (p: IconProps) => (
+  <Base {...p}>
+    <rect x="3" y="5" width="18" height="16" rx="2" />
+    <path d="M3 10h18M8 3v4M16 3v4" />
+  </Base>
+)
+
+export const AwardIcon = (p: IconProps) => (
+  <Base {...p}>
+    <circle cx="12" cy="9" r="6" />
+    <path d="m8.5 14-1.5 7 5-3 5 3-1.5-7" />
+  </Base>
+)
+
+export const CheckCircleIcon = (p: IconProps) => (
+  <Base {...p}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="m8.5 12 2.5 2.5 4.5-5" />
+  </Base>
+)
+
+export const HeartIcon = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9Z" />
+  </Base>
+)
+
+export const TargetIcon = (p: IconProps) => (
+  <Base {...p}>
+    <circle cx="12" cy="12" r="8" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="12" cy="12" r="1" />
+  </Base>
+)
+
+export const UserIcon = (p: IconProps) => (
+  <Base {...p}>
+    <circle cx="12" cy="8" r="4" />
+    <path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1" />
+  </Base>
+)
+
+export const BookIcon = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5Z" />
+    <path d="M20 18v3H6.5A2.5 2.5 0 0 1 4 18.5" />
+  </Base>
+)
+
+export const LayersIcon = (p: IconProps) => (
+  <Base {...p}>
+    <path d="m12 3 9 5-9 5-9-5 9-5Z" />
+    <path d="m3 13 9 5 9-5" />
+  </Base>
+)
+
+export const LeafIcon = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M4 20c0-8 5-13 16-13 0 9-5 13-11 13H4Z" />
+    <path d="M4 20c3-5 6-7.5 10-9" />
+  </Base>
+)
+
+export const BulbIcon = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M9 17h6M10 21h4" />
+    <path d="M12 3a6 6 0 0 0-3.5 10.9c.3.3.5.7.5 1.1h6c0-.4.2-.8.5-1.1A6 6 0 0 0 12 3Z" />
+  </Base>
+)
+
+export const ChartIcon = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
+  </Base>
+)
+
+export const SendIcon = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M21 3 10.5 13.5M21 3l-6.5 18-4-8-8-4L21 3Z" />
+  </Base>
+)
+
+export const PhoneIcon = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1z" />
+  </Base>
+)

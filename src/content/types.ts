@@ -10,8 +10,6 @@ export const same = (value: string): I18nText => ({ es: value, en: value })
 
 export type ChartKind = 'area' | 'bars' | 'line' | 'scatter'
 
-export type Accent = 'blue' | 'cyan' | 'indigo' | 'violet' | 'emerald'
-
 export interface ProjectLink {
   label: I18nText
   href: string
@@ -40,8 +38,6 @@ export interface Project {
   slug: string
   /** Se muestra tal cual en la tarjeta. Ej: "2026", "2025 · en curso". */
   year: string
-  /** Los destacados aparecen primero y ocupan más espacio en la grilla. */
-  featured: boolean
   category: I18nText
   title: I18nText
   summary: I18nText
@@ -58,7 +54,6 @@ export interface Project {
   /** Miniatura: si hay imagen se usa esa, si no se dibuja un mini gráfico. */
   cover: string | null
   chart: ChartKind
-  accent: Accent
   detail: ProjectDetail | null
 }
 
@@ -68,11 +63,14 @@ export interface ExperienceItem {
   place: I18nText
   period: I18nText
   bullets: I18nText[]
+  /** Se muestran como pastillas debajo de los datos del puesto. */
+  tools: I18nText[]
 }
 
 export interface EducationItem {
   degree: I18nText
   school: I18nText
+  location: I18nText
   period: I18nText
   detail: I18nText | null
   current: boolean
@@ -84,12 +82,59 @@ export interface CertificationItem {
   detail: I18nText | null
 }
 
-export interface SkillGroup {
+/** Ícono disponible para las tarjetas de contenido. */
+export type IconName =
+  | 'user'
+  | 'target'
+  | 'layers'
+  | 'graduation'
+  | 'book'
+  | 'chart'
+  | 'spark'
+  | 'bulb'
+  | 'leaf'
+  | 'heart'
+  | 'briefcase'
+
+/** Bloque de texto con ícono y título (columna izquierda de "Sobre mí"). */
+export interface AboutBlock {
+  icon: IconName
   title: I18nText
-  items: I18nText[]
+  text: I18nText
+}
+
+/** Tarjeta chica de dato (columna derecha de "Sobre mí"). */
+export interface AboutFact {
+  icon: IconName
+  title: I18nText
+  subtitle: I18nText
+  detail: I18nText
+}
+
+/** Herramienta con barra de nivel. */
+export interface Skill {
+  /** Logo de marca si existe; si no, se usa el ícono genérico. */
+  tool: 'python' | 'sql' | 'excel' | 'powerbi' | null
+  icon: IconName
+  name: string
+  description: I18nText
+  /** Nivel de dominio, de 0 a 100. Es una autoevaluación: ajustala. */
+  level: number
 }
 
 export interface Passion {
+  icon: IconName
   title: I18nText
   text: I18nText
+}
+
+/** Un medio de contacto de la sección final. */
+export interface ContactChannel {
+  icon: 'pin' | 'mail' | 'linkedin' | 'github' | 'phone'
+  label: I18nText
+  value: string
+  href: string
+  /** Color del ícono: rotan entre los tres tonos de la paleta, para que la
+      grilla no se vea toda del mismo azul. */
+  tone: 'primary' | 'accent' | 'violet'
 }

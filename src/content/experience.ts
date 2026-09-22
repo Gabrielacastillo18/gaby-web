@@ -22,6 +22,12 @@ export const experience: ExperienceItem[] = [
         en: 'Audited and reconciled medical accounts across portfolios of 20 to 400 patients per entity.',
       },
     ],
+    tools: [
+      { es: 'Excel avanzado', en: 'Advanced Excel' },
+      { es: 'Auditoría de datos', en: 'Data auditing' },
+      { es: 'Conciliación de cuentas', en: 'Account reconciliation' },
+      { es: 'Negociación', en: 'Negotiation' },
+    ],
   },
   {
     role: { es: 'Investigadora / Analista Sociojurídica', en: 'Researcher / Socio-legal Analyst' },
@@ -38,6 +44,12 @@ export const experience: ExperienceItem[] = [
         en: 'Produced the expert report submitted to court, which contributed to a favourable first-instance ruling.',
       },
     ],
+    tools: [
+      { es: 'Investigación cualitativa', en: 'Qualitative research' },
+      { es: 'Entrevistas semiestructuradas', en: 'Semi-structured interviews' },
+      { es: 'Análisis cuantitativo', en: 'Quantitative analysis' },
+      { es: 'Informe pericial', en: 'Expert reporting' },
+    ],
   },
   {
     role: { es: 'Practicante de Innovación', en: 'Innovation Intern' },
@@ -53,6 +65,12 @@ export const experience: ExperienceItem[] = [
         es: 'Rediseñó con Figma, Excel y Power BI el flujo de atención, orientado a reducir los 150–200 reclamos repetidos que se registraban por mes.',
         en: 'Redesigned the service flow with Figma, Excel and Power BI, aimed at reducing the 150–200 repeated claims recorded each month.',
       },
+    ],
+    tools: [
+      { es: 'Figma', en: 'Figma' },
+      { es: 'Power BI', en: 'Power BI' },
+      { es: 'Excel', en: 'Excel' },
+      { es: 'Investigación UX', en: 'UX research' },
     ],
   },
 ]
