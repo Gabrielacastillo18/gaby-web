@@ -4,16 +4,18 @@ export const education: EducationItem[] = [
   {
     degree: { es: 'Especialización en Análisis de Datos', en: 'Postgraduate Specialization in Data Analysis' },
     school: { es: 'Universidad de Buenos Aires (UBA)', en: 'University of Buenos Aires (UBA)' },
-    period: { es: 'En curso · egreso estimado marzo 2027', en: 'In progress · expected March 2027' },
+    location: { es: 'Buenos Aires, Argentina', en: 'Buenos Aires, Argentina' },
+    period: { es: 'Egreso estimado: marzo 2027', en: 'Expected: March 2027' },
     detail: {
-      es: '6 de 9 materias aprobadas: Técnicas Operativas para la Gestión, Métodos de Análisis Multivariado, Taller de Programación, Métodos Analíticos Predictivos, Gestión y Procesamiento de Bases de Datos y Proyecto Integrador Final.',
-      en: '6 of 9 courses completed: Operational Management Techniques, Multivariate Analysis Methods, Programming Workshop, Predictive Analytical Methods, Database Management and Processing, and Final Integrative Project.',
+      es: 'Formación en modelos de clasificación, clustering y PCA aplicados a problemas de negocio, salud y gestión de procesos. Incluye Técnicas Operativas para la Gestión, Métodos de Análisis Multivariado, Taller de Programación, Métodos Analíticos Predictivos, Gestión y Procesamiento de Bases de Datos, y Proyecto Integrador Final.',
+      en: 'Training in classification, clustering and PCA models applied to business, healthcare and process-management problems. Coursework includes Operational Management Techniques, Multivariate Analysis Methods, Programming Workshop, Predictive Analytical Methods, Database Management and Processing, and a Final Integrative Project.',
     },
     current: true,
   },
   {
     degree: { es: 'Licenciatura en Antropología', en: 'BA in Anthropology' },
-    school: { es: 'Universidad de los Andes, Bogotá', en: 'Universidad de los Andes, Bogotá' },
+    school: { es: 'Universidad de los Andes', en: 'Universidad de los Andes' },
+    location: { es: 'Bogotá, Colombia', en: 'Bogotá, Colombia' },
     period: { es: '2020 – 2024', en: '2020 – 2024' },
     detail: {
       es: 'Formación en métodos de investigación cualitativa y cuantitativa, y en el análisis de comportamiento social.',

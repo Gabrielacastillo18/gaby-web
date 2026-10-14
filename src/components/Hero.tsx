@@ -1,11 +1,12 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { heroBadge, heroIntro, heroStats, heroTitle, site } from '../content/site'
+import { heroIntro, heroTitle, heroTools, site } from '../content/site'
 import { ui } from '../content/ui'
 import { useLang } from '../context/LangContext'
 import { asset } from '../lib/assets'
 import { AreaChartBg } from './AreaChartBg'
 import { ArrowDownIcon, ArrowRightIcon, DownloadIcon, PinIcon } from './Icons'
 import { Portrait } from './Portrait'
+import { ToolBadge } from './ToolBadge'
 
 const scrollTo = (id: string) => {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -46,20 +47,9 @@ export function Hero() {
       <div className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 px-5 pb-24 pt-8 sm:px-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
         {/* Columna de texto */}
         <div className="order-2 text-center lg:order-1 lg:text-left">
-          <motion.span
-            {...fadeUp(0.45)}
-            className="inline-flex items-center gap-2.5 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-medium tracking-wide text-accent backdrop-blur-sm"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-            </span>
-            {t(heroBadge)}
-          </motion.span>
-
           <motion.h1
             {...fadeUp(0.55)}
-            className="mt-7 text-[2.6rem] font-extrabold leading-[1.07] sm:text-6xl lg:text-[4.1rem]"
+            className="mt-7 text-[2.6rem] font-extrabold leading-[1.07] sm:text-6xl lg:text-[3.6rem]"
           >
             {t(heroTitle.pre)} <span className="text-gradient">{t(heroTitle.mark)}</span>{' '}
             {t(heroTitle.post)}
@@ -95,33 +85,28 @@ export function Hero() {
             </a>
           </motion.div>
 
-          <motion.p
+          {/* Herramientas de trabajo */}
+          <motion.div
             {...fadeUp(0.88)}
-            className="mt-7 flex items-center justify-center gap-2 text-sm text-muted lg:justify-start"
+            className="mt-9 flex flex-wrap items-center justify-center gap-2.5 border-t border-line pt-8 lg:justify-start"
           >
-            <PinIcon size={15} className="text-accent" />
-            {t(site.location)}
-          </motion.p>
-
-          {/* Números fuertes */}
-          <motion.dl
-            {...fadeUp(0.96)}
-            className="mt-10 grid grid-cols-1 gap-x-8 gap-y-5 border-t border-line pt-8 sm:grid-cols-3"
-          >
-            {heroStats.map((stat) => (
-              <div key={stat.value}>
-                <dt className="font-display text-2xl font-bold text-gradient sm:text-[1.75rem]">
-                  {stat.value}
-                </dt>
-                <dd className="mt-1 text-xs leading-snug text-muted">{t(stat.label)}</dd>
-              </div>
+            {heroTools.map((tool) => (
+              <ToolBadge key={tool.id} id={tool.id} label={tool.label} />
             ))}
-          </motion.dl>
+          </motion.div>
         </div>
 
         {/* Retrato */}
         <div className="order-1 lg:order-2">
           <Portrait />
+
+          <motion.div {...fadeUp(0.7)} className="relative z-10 mt-16 text-center">
+            <p className="font-display text-xl font-bold">{t(site.role)}</p>
+            <p className="mt-1 flex items-center justify-center gap-1.5 text-sm text-muted">
+              <PinIcon size={14} className="text-accent" />
+              {t(site.location)}
+            </p>
+          </motion.div>
         </div>
       </div>
 

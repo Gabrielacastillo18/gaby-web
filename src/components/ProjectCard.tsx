@@ -2,9 +2,8 @@ import { Link } from 'react-router-dom'
 import type { Project } from '../content/types'
 import { ui } from '../content/ui'
 import { useLang } from '../context/LangContext'
-import { accentColor, softAccent } from '../lib/accent'
 import { asset } from '../lib/assets'
-import { ArrowRightIcon } from './Icons'
+import { ArrowRightIcon, CalendarIcon } from './Icons'
 import { MiniChart } from './MiniChart'
 
 /** Las tres líneas que resumen el caso, en la tarjeta. */
@@ -23,21 +22,21 @@ function Steps({ project }: { project: Project }) {
           <dt className="pt-[3px] text-[0.64rem] font-bold uppercase tracking-[0.12em] text-accent">
             {t(step.label)}
           </dt>
-          <dd className="line-clamp-2 text-sm leading-relaxed text-muted">{t(step.text)}</dd>
+          <dd className="text-sm leading-relaxed text-muted">{t(step.text)}</dd>
         </div>
       ))}
     </dl>
   )
 }
 
-function Thumb({ project, className }: { project: Project; className: string }) {
-  const color = accentColor[project.accent]
-
+function Thumb({ project, category }: { project: Project; category: string }) {
   return (
-    <div
-      className={`relative flex items-center justify-center overflow-hidden ${className}`}
-      style={{ background: `linear-gradient(135deg, ${softAccent(color, 12)}, transparent 70%)` }}
-    >
+    <div className="relative flex h-40 items-center justify-center overflow-hidden bg-gradient-to-br from-accent/10 to-transparent sm:h-44">
+      {/* La categoría flota arriba del gráfico; no importa si lo tapa un poco. */}
+      <span className="absolute left-3 top-3 z-10 rounded-full bg-surface/90 px-2.5 py-1 text-xs font-medium text-accent shadow-sm backdrop-blur-sm">
+        {category}
+      </span>
+
       {project.cover ? (
         <img
           src={asset(project.cover)}
@@ -48,49 +47,41 @@ function Thumb({ project, className }: { project: Project; className: string }) 
         <MiniChart
           kind={project.chart}
           seed={project.slug}
-          accent={project.accent}
-          className="aspect-[2/1] max-h-full w-full p-5 text-fg transition-transform duration-700 group-hover:scale-[1.03]"
+          className="aspect-[2/1] max-h-full w-full p-5 text-accent transition-transform duration-700 group-hover:scale-[1.03]"
         />
       )}
     </div>
   )
 }
 
+/**
+ * Todas las tarjetas comparten el mismo layout vertical y el mismo color
+ * de acento: antes cada proyecto tenía un color distinto (se veía como un
+ * arcoíris) y los destacados tenían un ancho especial. Ahora la grilla es
+ * uniforme, de a dos por fila en pantallas medianas en adelante.
+ */
 export function ProjectCard({ project }: { project: Project }) {
   const { t } = useLang()
-  const featured = project.featured
 
   return (
     <Link
       to={`/proyecto/${project.slug}`}
-      className={`group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface/60 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-xl hover:shadow-black/10 ${
-        featured ? 'md:grid md:grid-cols-[minmax(0,19rem)_1fr]' : ''
-      }`}
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface/60 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-xl hover:shadow-black/10"
     >
-      <Thumb project={project} className={featured ? 'h-44 md:h-full' : 'h-40'} />
+      <Thumb project={project} category={t(project.category)} />
 
       <div className="flex grow flex-col p-6 sm:p-7">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs">
-          <span
-            className="rounded-full px-2.5 py-1 font-medium"
-            style={{
-              color: accentColor[project.accent],
-              backgroundColor: `${softAccent(accentColor[project.accent], 10)}`,
-            }}
-          >
-            {t(project.category)}
-          </span>
-          <span className="text-muted">{project.year}</span>
-          {featured && (
-            <span className="ml-auto rounded-full border border-accent/40 px-2.5 py-1 font-medium text-accent">
-              {t(ui.project.featured)}
-            </span>
-          )}
-        </div>
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="font-display text-xl font-semibold leading-snug transition-colors group-hover:text-accent">
+            {t(project.title)}
+          </h3>
 
-        <h3 className="mt-3.5 font-display text-xl font-bold leading-snug transition-colors group-hover:text-accent sm:text-[1.35rem]">
-          {t(project.title)}
-        </h3>
+          {/* La fecha va siempre pegada a la derecha del título. */}
+          <div className="mt-1 flex shrink-0 items-center gap-1.5 whitespace-nowrap text-xs text-muted">
+            <CalendarIcon size={13} />
+            <span>{project.year}</span>
+          </div>
+        </div>
 
         {project.note && <p className="mt-1.5 text-xs text-muted">{t(project.note)}</p>}
 
@@ -99,7 +90,7 @@ export function ProjectCard({ project }: { project: Project }) {
         <Steps project={project} />
 
         <div className="mt-5 flex flex-wrap gap-1.5">
-          {project.tools.slice(0, 5).map((tool, index) => (
+          {project.tools.map((tool, index) => (
             <span
               key={index}
               className="rounded-md border border-line bg-bg/60 px-2 py-1 text-[0.7rem] text-muted"
@@ -112,9 +103,7 @@ export function ProjectCard({ project }: { project: Project }) {
         <div className="mt-6 flex items-end justify-between gap-4 border-t border-line pt-5">
           {project.metric ? (
             <div>
-              <p className="font-display text-xl font-bold" style={{ color: accentColor[project.accent] }}>
-                {project.metric.value}
-              </p>
+              <p className="font-display text-xl font-bold text-accent">{project.metric.value}</p>
               <p className="text-[0.7rem] leading-tight text-muted">{t(project.metric.label)}</p>
             </div>
           ) : (

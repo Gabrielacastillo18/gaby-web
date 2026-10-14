@@ -7,42 +7,47 @@
    Tokens de color. Se definen como variables CSS "crudas" en :root
    y .dark, y se exponen a Tailwind con @theme inline para poder
    escribir bg-bg, text-fg, border-line, text-primary, etc.
+
+   Paleta: navy casi negro + azul eléctrico bien saturado, en una sola
+   familia de color (azul → índigo). Sin celestes pastel ni colores
+   sueltos: el contraste es alto a propósito, para que se lea sobrio y
+   confiable, pero el azul en sí va vívido, no apagado.
    --------------------------------------------------------------- */
 :root {
   --bg: #ffffff;
-  --bg-elev: #f8fafc;
+  --bg-elev: #f1f5fa;
   --surface: #ffffff;
-  --fg: #0f172a;
-  --muted: #64748b;
-  --line: rgba(15, 23, 42, 0.10);
-  --primary: #2563eb;
-  --accent: #0284c7;
-  --violet: #6366f1;
-  --hero-a: #eff6ff;
-  --hero-b: #dbeafe;
-  --hero-c: #bfdbfe;
-  --glow-1: rgba(37, 99, 235, 0.28);
-  --glow-2: rgba(56, 189, 248, 0.26);
-  --chart-opacity: 0.22;
+  --fg: #0a1121;
+  --muted: #51607a;
+  --line: rgba(10, 17, 33, 0.14);
+  --primary: #1d4fd8;
+  --accent: #2f6fed;
+  --violet: #4338ca;
+  --hero-a: #ffffff;
+  --hero-b: #f6f9fd;
+  --hero-c: #e9eff7;
+  --glow-1: rgba(29, 79, 216, 0.22);
+  --glow-2: rgba(47, 111, 237, 0.16);
+  --chart-opacity: 0.1;
   color-scheme: light;
 }
 
 .dark {
-  --bg: #020617;
-  --bg-elev: #0b1222;
-  --surface: #0f172a;
-  --fg: #f1f5f9;
-  --muted: #94a3b8;
-  --line: rgba(255, 255, 255, 0.10);
-  --primary: #3b82f6;
-  --accent: #38bdf8;
-  --violet: #818cf8;
-  --hero-a: #020617;
-  --hero-b: #0f172a;
-  --hero-c: #1e3a5f;
-  --glow-1: rgba(37, 99, 235, 0.45);
-  --glow-2: rgba(56, 189, 248, 0.35);
-  --chart-opacity: 0.16;
+  --bg: #060910;
+  --bg-elev: #0a0f1a;
+  --surface: #0f1624;
+  --fg: #f4f8fd;
+  --muted: #98a6bc;
+  --line: rgba(148, 163, 184, 0.18);
+  --primary: #2f6fed;
+  --accent: #5b9dff;
+  --violet: #6366f1;
+  --hero-a: #060910;
+  --hero-b: #0a1322;
+  --hero-c: #112a4e;
+  --glow-1: rgba(47, 111, 237, 0.55);
+  --glow-2: rgba(91, 157, 255, 0.35);
+  --chart-opacity: 0.17;
   color-scheme: dark;
 }
 

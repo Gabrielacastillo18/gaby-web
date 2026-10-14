@@ -1,7 +1,6 @@
 import { motion, useInView, useReducedMotion } from 'framer-motion'
 import { useRef } from 'react'
-import type { Accent, ChartKind } from '../content/types'
-import { accentColor } from '../lib/accent'
+import type { ChartKind } from '../content/types'
 import { areaPath, hashSeed, linePath, seeded, series } from '../lib/chart'
 import { useSize } from '../lib/useSize'
 
@@ -13,7 +12,10 @@ import { useSize } from '../lib/useSize'
      una barra que arranca en altura cero no tiene área, y el observador de
      intersección nunca la daría por visible.
    - El lienzo se dibuja en píxeles reales en vez de estirar un viewBox fijo,
-     así los puntos del scatter son círculos y no óvalos. */
+     así los puntos del scatter son círculos y no óvalos.
+   - No recibe un color: dibuja todo en "currentColor", así el color de
+     texto del elemento que lo envuelve (className="text-accent" o el que
+     sea) es el que se usa. Mantiene a todos los proyectos en el mismo tono. */
 
 const FALLBACK = { w: 240, h: 120 }
 const EASE = [0.22, 1, 0.36, 1] as const
@@ -21,12 +23,10 @@ const EASE = [0.22, 1, 0.36, 1] as const
 export function MiniChart({
   kind,
   seed,
-  accent,
   className = '',
 }: {
   kind: ChartKind
   seed: string
-  accent: Accent
   className?: string
 }) {
   const reduced = useReducedMotion()
@@ -35,7 +35,7 @@ export function MiniChart({
   const show = reduced || inView
   const { w: W, h: H } = useSize(ref, FALLBACK)
 
-  const color = accentColor[accent]
+  const color = 'currentColor'
   const numericSeed = hashSeed(seed)
   const values = series(kind === 'bars' ? 9 : 14, numericSeed, 0.5, 0.34)
   const inset = Math.min(14, H * 0.12)

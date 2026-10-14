@@ -1,71 +1,107 @@
 import { certifications, education } from '../content/education'
 import { ui } from '../content/ui'
 import { useLang } from '../context/LangContext'
-import { SparkIcon } from './Icons'
+import { AwardIcon, CalendarIcon, GraduationIcon, PinIcon } from './Icons'
 import { Reveal } from './Reveal'
-import { Section } from './Section'
+import { Section, SectionTitle } from './Section'
+import { Card, CardContent, CardHeader, CardTitle } from './ui/Card'
 
 export function Education() {
   const { t } = useLang()
 
   return (
-    <Section
-      id="education"
-      eyebrow={ui.sections.educationEyebrow}
-      title={ui.sections.educationTitle}
-      className="bg-elev/60"
-    >
-      <div className="grid gap-5 lg:grid-cols-2">
-        {education.map((item, index) => (
-          <Reveal key={index} delay={index * 0.08} className="h-full">
-            <article className="relative h-full overflow-hidden rounded-2xl border border-line bg-surface/60 p-6 sm:p-7">
-              {item.current && (
-                <span className="absolute right-5 top-5 flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/10 px-2.5 py-1 text-[0.68rem] font-semibold text-accent">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-                  {t(ui.sections.inProgress)}
-                </span>
-              )}
+    <Section id="education" heading={ui.sections.education} className="bg-elev/60">
+      {/* Línea de tiempo alternada */}
+      <div className="relative">
+        <div
+          className="absolute bottom-8 left-8 top-8 w-1 rounded-full bg-accent/30 md:left-1/2 md:-translate-x-1/2"
+          aria-hidden="true"
+        />
 
-              <p
-                className={`text-xs font-semibold uppercase tracking-wider text-accent ${
-                  item.current ? 'pr-24' : ''
+        <div className="space-y-12">
+          {education.map((item, index) => (
+            <Reveal key={index} delay={index * 0.1}>
+              <div
+                className={`relative flex flex-col items-center md:justify-center ${
+                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
               >
-                {t(item.period)}
-              </p>
-              <h3 className="mt-2 max-w-[85%] font-display text-lg font-bold leading-snug">
-                {t(item.degree)}
-              </h3>
-              <p className="mt-1 text-sm text-muted">{t(item.school)}</p>
-              {item.detail && (
-                <p className="mt-4 border-t border-line pt-4 text-sm leading-relaxed text-muted">
-                  {t(item.detail)}
-                </p>
-              )}
-            </article>
-          </Reveal>
-        ))}
+                {/* Punto del timeline */}
+                <span
+                  className="absolute left-8 z-10 h-4 w-4 rounded-full border-4 border-bg bg-accent shadow-lg md:left-1/2 md:-translate-x-1/2"
+                  aria-hidden="true"
+                />
+
+                <div
+                  // En mobile la tarjeta deja lugar para la línea de la izquierda;
+                  // en desktop ocupa media columna a un lado del eje.
+                  className={`ml-16 w-[calc(100%-4rem)] md:ml-0 md:w-5/12 ${
+                    index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
+                  }`}
+                >
+                  <Card className="hover:shadow-lg hover:shadow-black/10">
+                    <CardHeader>
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          <CardTitle className="mb-2 text-xl">{t(item.degree)}</CardTitle>
+                          <p className="text-lg text-accent">{t(item.school)}</p>
+                        </div>
+                        <span className="rounded-full bg-accent/15 p-2">
+                          <GraduationIcon size={24} className="text-accent" />
+                        </span>
+                      </div>
+                    </CardHeader>
+
+                    <CardContent className="pt-4">
+                      <div className="space-y-3">
+                        <div className="flex items-center text-muted">
+                          <CalendarIcon size={16} className="mr-2 shrink-0" />
+                          <span>{t(item.period)}</span>
+                        </div>
+                        <div className="flex items-center text-muted">
+                          <PinIcon size={16} className="mr-2 shrink-0" />
+                          <span>{t(item.location)}</span>
+                        </div>
+                        <div className="flex items-center">
+                          <AwardIcon size={16} className="mr-2 shrink-0 text-accent" />
+                          <span className="text-accent">
+                            {t(item.current ? ui.sections.inProgress : ui.sections.completed)}
+                          </span>
+                        </div>
+                        {item.detail && (
+                          <p className="leading-relaxed text-muted">{t(item.detail)}</p>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
 
+      {/* Certificaciones */}
       {certifications.length > 0 && (
-        <div className="mt-14">
+        <div className="mt-16 text-center">
           <Reveal>
-            <h3 className="mb-5 flex items-center gap-2.5 font-display text-sm font-bold uppercase tracking-wider text-muted">
-              <SparkIcon size={16} className="text-accent" />
-              {t(ui.sections.certifications)}
-            </h3>
+            <div className="mb-8">
+              <SectionTitle heading={ui.sections.certifications} size="md" />
+            </div>
           </Reveal>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {certifications.map((item, index) => (
               <Reveal key={index} delay={index * 0.06} className="h-full">
-                <article className="h-full rounded-xl border border-line bg-surface/40 p-5 transition-colors hover:border-accent/40">
-                  <h4 className="font-display text-sm font-bold">{t(item.name)}</h4>
-                  <p className="mt-1 text-xs text-accent">{t(item.issuer)}</p>
-                  {item.detail && (
-                    <p className="mt-2.5 text-xs leading-relaxed text-muted">{t(item.detail)}</p>
-                  )}
-                </article>
+                <Card className="h-full p-6 text-center hover:shadow-lg hover:shadow-black/10">
+                  <CardContent className="p-0">
+                    <h4 className="font-display text-base font-bold">{t(item.name)}</h4>
+                    <p className="mt-1 text-sm text-accent">{t(item.issuer)}</p>
+                    {item.detail && (
+                      <p className="mt-2.5 text-sm leading-relaxed text-muted">{t(item.detail)}</p>
+                    )}
+                  </CardContent>
+                </Card>
               </Reveal>
             ))}
           </div>

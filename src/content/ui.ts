@@ -1,4 +1,3 @@
-import type { I18nText } from './types'
 
 /* Textos fijos de la interfaz (botones, títulos de sección, etiquetas). */
 
@@ -10,6 +9,7 @@ export const ui = {
     projects: { es: 'Proyectos', en: 'Projects' },
     experience: { es: 'Experiencia', en: 'Experience' },
     education: { es: 'Formación', en: 'Education' },
+    passions: { es: 'Intereses', en: 'Interests' },
     contact: { es: 'Contacto', en: 'Contact' },
   },
 
@@ -19,36 +19,101 @@ export const ui = {
     scroll: { es: 'Seguí bajando', en: 'Scroll down' },
   },
 
+  /* Cada título se parte en dos: la segunda parte se pinta con el color de
+     acento, igual que en la referencia ("About Me", "Technical Skills"). */
   sections: {
-    aboutEyebrow: { es: 'Sobre mí', en: 'About' },
-    aboutTitle: { es: 'Quién está detrás del análisis', en: 'Who is behind the analysis' },
-
-    skillsEyebrow: { es: 'Herramientas', en: 'Skills' },
-    skillsTitle: { es: 'Con qué trabajo', en: 'What I work with' },
-
-    projectsEyebrow: { es: 'Proyectos', en: 'Projects' },
-    projectsTitle: { es: 'Problema, análisis, solución', en: 'Problem, analysis, solution' },
-    projectsIntro: {
-      es: 'Cada caso empieza por una pregunta concreta y termina en algo que se puede usar. Entrá al detalle para ver el proceso completo.',
-      en: 'Every case starts from a concrete question and ends in something usable. Open a case to see the full process.',
+    about: {
+      pre: { es: 'Sobre', en: 'About' },
+      mark: { es: 'mí', en: 'Me' },
+      subtitle: {
+        es: 'Analista de datos con formación en antropología: primero entiendo el contexto, después bajo a los números.',
+        en: 'A data analyst with a background in anthropology: I understand the context first, then get down to the numbers.',
+      },
     },
 
-    experienceEyebrow: { es: 'Experiencia', en: 'Experience' },
-    experienceTitle: { es: 'Dónde estuve', en: 'Where I have been' },
+    education: {
+      pre: { es: 'Mi', en: 'Educational' },
+      mark: { es: 'formación', en: 'Journey' },
+      subtitle: {
+        es: 'El recorrido académico que formó mi manera de mirar y de preguntar.',
+        en: 'The academic path that shaped how I look at things and how I ask questions.',
+      },
+    },
 
-    educationEyebrow: { es: 'Formación', en: 'Education' },
-    educationTitle: { es: 'Qué estudié', en: 'What I studied' },
-    certifications: { es: 'Certificaciones y cursos', en: 'Certifications and courses' },
+    experience: {
+      pre: { es: 'Experiencia', en: 'Professional' },
+      mark: { es: 'profesional', en: 'Experience' },
+      subtitle: {
+        es: 'Dónde apliqué el análisis a problemas reales, con consecuencias concretas.',
+        en: 'Where I applied analysis to real problems, with concrete consequences.',
+      },
+    },
+
+    skills: {
+      pre: { es: 'Herramientas', en: 'Technical' },
+      mark: { es: 'técnicas', en: 'Skills' },
+      subtitle: {
+        es: 'Con qué trabajo para convertir datos en algo que se pueda usar.',
+        en: 'What I work with to turn data into something usable.',
+      },
+    },
+
+    projects: {
+      pre: { es: 'Mis', en: 'My' },
+      mark: { es: 'proyectos', en: 'Projects' },
+      subtitle: {
+        es: 'Cada caso empieza por una pregunta concreta y termina en algo que se puede usar. Entrá al detalle para ver el proceso completo.',
+        en: 'Every case starts from a concrete question and ends in something usable. Open a case to see the full process.',
+      },
+    },
+
+    passions: {
+      pre: { es: 'Fuera de los', en: 'Passionate' },
+      mark: { es: 'datos', en: 'About' },
+      subtitle: {
+        es: 'Los temas y las formas de mirar que me mantienen curiosa y con ganas de aprender.',
+        en: 'The topics and ways of looking at things that keep me curious and eager to learn.',
+      },
+    },
+
+    contact: {
+      pre: { es: 'Hablemos de', en: 'Reach' },
+      mark: { es: 'datos', en: 'Me' },
+      subtitle: {
+        es: 'Estoy abierta a posiciones de análisis de datos, proyectos freelance y colaboraciones. Escribime y te respondo.',
+        en: 'I am open to data analyst roles, freelance projects and collaborations. Write to me and I will get back to you.',
+      },
+    },
+
+    /* Sub-bloques que van debajo de algunas secciones. */
+    certifications: {
+      pre: { es: 'Certificaciones y', en: 'Certifications and' },
+      mark: { es: 'cursos', en: 'courses' },
+    },
+    additionalSkills: {
+      pre: { es: 'Otras', en: 'Additional' },
+      mark: { es: 'competencias', en: 'Competencies' },
+    },
+    balance: {
+      pre: { es: 'Mi', en: 'My' },
+      mark: { es: 'enfoque', en: 'approach' },
+      text: {
+        es: 'Creo que la curiosidad fuera del trabajo mejora el trabajo. Entender cómo alguien vive un servicio, o cómo se mueve un alimento desde el campo hasta la mesa, me obliga a mirar un problema completo antes de reducirlo a una tabla. Esa mirada transversal es la que después me permite hacer las preguntas correctas cuando abro los datos.',
+        en: 'I believe curiosity outside work makes the work better. Understanding how someone experiences a service, or how food moves from the field to the table, forces me to see a whole problem before reducing it to a table. That transversal view is what later lets me ask the right questions when I open the data.',
+      },
+    },
     inProgress: { es: 'En curso', en: 'In progress' },
-
-    passionsEyebrow: { es: 'Fuera de los datos', en: 'Beyond data' },
-    passionsTitle: { es: 'Qué me mueve', en: 'What keeps me going' },
-
-    contactEyebrow: { es: 'Contacto', en: 'Contact' },
-    contactTitle: { es: 'Hablemos', en: "Let's talk" },
-    contactIntro: {
-      es: 'Estoy abierta a posiciones de análisis de datos, proyectos freelance y colaboraciones. Escribime y te respondo.',
-      en: 'I am open to data analyst roles, freelance projects and collaborations. Write to me and I will get back to you.',
+    completed: { es: 'Completado', en: 'Completed' },
+    details: { es: 'Detalles', en: 'Details' },
+    achievements: { es: 'Logros', en: 'Achievements' },
+    toolsUsed: { es: 'Herramientas', en: 'Tools used' },
+    readyToTalk: { es: '¿Empezamos una conversación?', en: 'Ready to start a conversation?' },
+    opportunities: {
+      title: { es: 'Oportunidades profesionales', en: 'Professional opportunities' },
+      text: {
+        es: 'Busco posiciones de análisis de datos, business intelligence y roles donde el análisis tenga impacto real. Si estás armando equipo o querés colaborar en un proyecto, escribime.',
+        en: 'I am looking for roles in data analysis, business intelligence and positions where analysis has real impact. If you are building a team or want to collaborate on a project, write to me.',
+      },
     },
   },
 
@@ -57,7 +122,6 @@ export const ui = {
     analysis: { es: 'Análisis', en: 'Analysis' },
     solution: { es: 'Solución', en: 'Solution' },
     viewCase: { es: 'Ver caso', en: 'View case' },
-    featured: { es: 'Destacado', en: 'Featured' },
     back: { es: 'Volver a proyectos', en: 'Back to projects' },
     context: { es: 'Contexto', en: 'Context' },
     data: { es: 'Datos', en: 'Data' },
@@ -72,6 +136,11 @@ export const ui = {
   },
 
   contact: {
+    getInTouch: { es: 'Ponete en contacto', en: 'Get in touch' },
+    getInTouchText: {
+      es: 'Siempre estoy abierta a conversar sobre oportunidades en análisis de datos, colaborar en proyectos o intercambiar ideas. Escribime por el canal que te quede más cómodo.',
+      en: 'I am always open to talking about opportunities in data analysis, collaborating on projects or exchanging ideas. Reach out through whichever channel suits you best.',
+    },
     email: { es: 'Email', en: 'Email' },
     copy: { es: 'Copiar', en: 'Copy' },
     copied: { es: '¡Copiado!', en: 'Copied!' },
@@ -120,4 +189,4 @@ export const ui = {
     closeMenu: { es: 'Cerrar menú', en: 'Close menu' },
     portrait: { es: 'Foto de Lina Gabriela Castillo', en: 'Photo of Lina Gabriela Castillo' },
   },
-} satisfies Record<string, Record<string, I18nText | I18nText[]>>
+}

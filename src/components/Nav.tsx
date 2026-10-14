@@ -10,10 +10,11 @@ import { CloseIcon, MenuIcon, MoonIcon, SunIcon } from './Icons'
 const sections = [
   { id: 'home', label: ui.nav.home },
   { id: 'about', label: ui.nav.about },
+  { id: 'education', label: ui.nav.education },
+  { id: 'experience', label: ui.nav.experience },
   { id: 'skills', label: ui.nav.skills },
   { id: 'projects', label: ui.nav.projects },
-  { id: 'experience', label: ui.nav.experience },
-  { id: 'education', label: ui.nav.education },
+  { id: 'passions', label: ui.nav.passions },
   { id: 'contact', label: ui.nav.contact },
 ]
 
@@ -84,9 +85,7 @@ export function Nav() {
           onClick={() => goToSection('home')}
           className="font-display text-lg font-bold tracking-tight"
         >
-          <span className="text-primary">{site.initials[0]}</span>
-          {site.shortName.slice(1)}
-          <span className="text-accent">.</span>
+          {site.shortName.toLowerCase()}
         </button>
 
         <nav className="hidden items-center gap-7 lg:flex">

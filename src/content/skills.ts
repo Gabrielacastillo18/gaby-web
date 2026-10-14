@@ -1,59 +1,83 @@
-import { same, type SkillGroup } from './types'
+import type { I18nText, Skill } from './types'
 
-/* Herramientas y métodos, agrupados. Agregar o sacar elementos libremente. */
+/* -------------------------------------------------------------------
+   Herramientas con barra de nivel.
 
-export const skillGroups: SkillGroup[] = [
+   OJO: "level" es una autoevaluación (0 a 100) y hoy tiene valores
+   tentativos. Revisalos, son los únicos números del sitio que no salen
+   del CV.
+   ------------------------------------------------------------------- */
+
+export const skills: Skill[] = [
   {
-    title: { es: 'Lenguajes y librerías', en: 'Languages and libraries' },
-    items: [
-      same('Python'),
-      same('pandas'),
-      same('NumPy'),
-      same('scikit-learn'),
-      same('matplotlib'),
-      same('spaCy'),
-      same('SQL'),
-    ],
+    tool: 'python',
+    icon: 'chart',
+    name: 'Python',
+    description: { es: 'pandas, NumPy, scikit-learn, matplotlib', en: 'pandas, NumPy, scikit-learn, matplotlib' },
+    level: 85,
   },
   {
-    title: { es: 'Visualización y reporting', en: 'Visualization and reporting' },
-    items: [
-      same('Power BI'),
-      { es: 'Excel avanzado', en: 'Advanced Excel' },
-      { es: 'Tablas dinámicas', en: 'Pivot tables' },
-      { es: 'Informes ejecutivos', en: 'Executive reporting' },
-    ],
+    tool: 'sql',
+    icon: 'layers',
+    name: 'SQL',
+    description: {
+      es: 'Consultas, cruces y depuración de bases',
+      en: 'Queries, joins and database cleaning',
+    },
+    level: 80,
   },
   {
-    title: { es: 'Métodos de análisis', en: 'Analytical methods' },
-    items: [
-      { es: 'Clasificación', en: 'Classification' },
-      same('Clustering'),
-      { es: 'Análisis discriminante', en: 'Discriminant analysis' },
-      same('PCA'),
-      { es: 'Regresión logística', en: 'Logistic regression' },
-      same('Random Forest'),
-      { es: 'Cadenas de Markov', en: 'Markov chains' },
-      { es: 'Análisis exploratorio (EDA)', en: 'Exploratory analysis (EDA)' },
-      { es: 'Auditoría de datos', en: 'Data auditing' },
-    ],
+    tool: 'powerbi',
+    icon: 'chart',
+    name: 'Power BI',
+    description: {
+      es: 'Tableros y visualización de datos',
+      en: 'Dashboards and data visualization',
+    },
+    level: 80,
   },
   {
-    title: { es: 'Entorno de trabajo', en: 'Working environment' },
-    items: [
-      same('Google Colab'),
-      same('Jupyter'),
-      same('VS Code'),
-      same('Git'),
-      same('Figma'),
-      { es: 'Investigación UX', en: 'UX Research' },
-    ],
+    tool: 'excel',
+    icon: 'layers',
+    name: 'Excel',
+    description: {
+      es: 'Fórmulas avanzadas, tablas dinámicas, auditoría',
+      en: 'Advanced formulas, pivot tables, auditing',
+    },
+    level: 90,
   },
   {
-    title: { es: 'Idiomas', en: 'Languages' },
-    items: [
-      { es: 'Español (nativo)', en: 'Spanish (native)' },
-      { es: 'Inglés', en: 'English' },
-    ],
+    tool: null,
+    icon: 'bulb',
+    name: 'scikit-learn',
+    description: {
+      es: 'Clasificación, clustering, PCA, random forest',
+      en: 'Classification, clustering, PCA, random forest',
+    },
+    level: 75,
   },
+  {
+    tool: null,
+    icon: 'target',
+    name: 'Figma',
+    description: {
+      es: 'Diseño de interfaces e investigación UX',
+      en: 'Interface design and UX research',
+    },
+    level: 70,
+  },
+]
+
+/** Pastillas que van debajo de la grilla de herramientas. */
+export const additionalSkills: I18nText[] = [
+  { es: 'Análisis exploratorio (EDA)', en: 'Exploratory analysis (EDA)' },
+  { es: 'Auditoría de datos', en: 'Data auditing' },
+  { es: 'Análisis discriminante', en: 'Discriminant analysis' },
+  { es: 'Regresión logística', en: 'Logistic regression' },
+  { es: 'Cadenas de Markov', en: 'Markov chains' },
+  { es: 'Investigación cualitativa', en: 'Qualitative research' },
+  { es: 'Investigación UX', en: 'UX research' },
+  { es: 'Comunicación de resultados', en: 'Communicating results' },
+  { es: 'Español (nativo)', en: 'Spanish (native)' },
+  { es: 'Inglés', en: 'English' },
 ]
