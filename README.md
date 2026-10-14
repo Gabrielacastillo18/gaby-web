@@ -163,4 +163,4 @@ origen/           Archivos originales sin procesar (foto sin recortar, CV en Wor
 ### Los colores
 
 Están todos definidos en `src/index.css`, arriba de todo: `:root` para el tema claro
-y `.dark` para el oscuro. Cambiando esas variables cambia el sitio entero.
+y `.dark` para el oscuro. Cambiando esas variables cambia el sitio entero
